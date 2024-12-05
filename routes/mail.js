@@ -3,7 +3,7 @@ const router = express.Router();
 const emailjs = require("emailjs-com");
 
 router.post("/", (req, res) => {
-  const { name, societe, phone, email, clientMessage } = req.body;
+  const { name, societe, phone, email, message } = req.body;
   const templateParams = {
     from_name: name,
     societe: societe,
