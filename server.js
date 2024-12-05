@@ -1,18 +1,14 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const app = express();
 require("dotenv").config();
+const express = require("express");
+const mailRouter = require("./routes/mail");
+const app = express();
 
-const mailRoute = require("./routes/mail");
+app.use(express.json());
+app.use("/api/mail", mailRouter);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use("/send-email", mailRoute);
-
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
 });
 
 module.exports = server;
